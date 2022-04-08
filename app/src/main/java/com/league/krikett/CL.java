@@ -139,17 +139,23 @@ public class CL extends AppCompatActivity {
 
 
                         } catch (Exception e) {
-                            Toast toast = Toast.makeText(getApplicationContext(),
-                                    WebSettingCL.decodeCl("Q29ubmVjdCB0byB0aGUgSW50ZXJuZXQh"), Toast.LENGTH_LONG);
-                            toast.show();
-                            new Handler().postDelayed(new Runnable() {
+                            runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startActivity(new Intent(getApplicationContext(), CL.class));
-                                    finishAffinity();
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            WebSettingCL.decodeCl("Q29ubmVjdCB0byB0aGUgSW50ZXJuZXQh"), Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            startActivity(new Intent(getApplicationContext(), CL.class));
+                                            finishAffinity();
 
+                                        }
+                                    }, 2000);
                                 }
-                            }, 2000);
+                            });
+
                         }
 
                     }
@@ -161,15 +167,22 @@ public class CL extends AppCompatActivity {
 
 
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    WebSettingCL.decodeCl("Q29ubmVjdCB0byB0aGUgSW50ZXJuZXQh"), Toast.LENGTH_LONG);
-            toast.show();
-            new Handler().postDelayed(new Runnable() {
+            runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(getApplicationContext(), CL.class));
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            WebSettingCL.decodeCl("Q29ubmVjdCB0byB0aGUgSW50ZXJuZXQh"), Toast.LENGTH_SHORT);
+                    toast.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(getApplicationContext(), CL.class));
+                            finishAffinity();
+
+                        }
+                    }, 2000);
                 }
-            }, 2000);
+            });
         }
 
 
