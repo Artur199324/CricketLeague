@@ -39,16 +39,8 @@ public class ApplicationCL extends Application {
         OneSignal.initWithContext(this);
         OneSignal.setAppId(WebSettingCL.decodeCl("ODQ4MGU4YmQtYjU0ZS00MDMxLWI0ZjMtNWZkODVlYWJjMjBi"));
 
-        isOnline();
+
     }
 
-    protected boolean isOnline() {
-        String cs = Context.CONNECTIVITY_SERVICE;
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
-        if (cm.getActiveNetworkInfo() == null) {
-            return onl = false;
-        } else {
-            return onl = true;
-        }
-    }
+
 }

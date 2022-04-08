@@ -3,7 +3,9 @@ package com.league.krikett;
 import static com.league.krikett.set.ApFbCL.eqeqds;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -89,6 +91,7 @@ public class CL extends AppCompatActivity {
         webViewCL = findViewById(R.id.webViewCL);
         WebSettingCL.webSettingCL(this, webViewCL);
         ApFbCL.cl = this;
+        isOnline();
 
         if (ApplicationCL.onl) {
 
@@ -113,7 +116,7 @@ public class CL extends AppCompatActivity {
                                 public void run() {
                                     ApFbCL.dipCl();
 
-                                    new CountDownTimer(20000,1000){
+                                    new CountDownTimer(15000,1000){
 
                                         @Override
                                         public void onTick(long l) {
@@ -143,6 +146,8 @@ public class CL extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     startActivity(new Intent(getApplicationContext(), CL.class));
+                                    finishAffinity();
+
                                 }
                             }, 2000);
                         }
@@ -168,6 +173,16 @@ public class CL extends AppCompatActivity {
         }
 
 
+    }
+
+    protected boolean isOnline() {
+        String cs = Context.CONNECTIVITY_SERVICE;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
+        if (cm.getActiveNetworkInfo() == null) {
+            return ApplicationCL.onl = false;
+        } else {
+            return ApplicationCL.onl = true;
+        }
     }
 
     @Override
